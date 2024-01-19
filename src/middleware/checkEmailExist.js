@@ -10,7 +10,7 @@ export const checkEmail = async (req, res, next) => {
     return next(new appError('Email already in use.', 409));
   } else {
     // Hash password before saving to database
-    req.body.password = bcrypt.hashSync(req.body.password, process.env.HASH_ROUND);
+    req.body.password = bcrypt.hashSync(req.body.password, +process.env.HASH_ROUND);
     next();
   }
 }

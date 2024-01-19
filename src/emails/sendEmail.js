@@ -10,11 +10,11 @@ export const sendEmail = async (email, name) => {
     service: "gmail",
     auth: {
       user: "fwadea3@gmail.com",
-      pass: "hnjbilhrrlxkqfmt"
+      pass: process.env.Pass_Gmail
     }
   });
 
-  let token = jwt.sign({ email }, 'myNameIsHero');
+  let token = jwt.sign({ email }, process.env.JWT_KEY);
 
   const info = await transporter.sendMail({
     from: '"The Hero" <fwadea3@gmail.com>',

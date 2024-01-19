@@ -36,7 +36,7 @@ export const signin = catchError(async (req, res, next) => {
   if (user) {
     if (bcrypt.compareSync(password, user.password)) {
       if (user.verifyEmail) {
-        const token = jwt.sign({ userId: user._id, email: user.email }, 'myNameIsHero');
+        const token = jwt.sign({ userId: user._id, email: user.email }, process.env.JWT_KEY);
         return res.status(200).json({ message: `Welcome ${user.name}.`, token });
       } else { next(new appError('Account not verify.', 401)); };
     } else { next(new appError('Invalid Password.', 401)); };
