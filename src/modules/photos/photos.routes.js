@@ -1,4 +1,4 @@
-"use strict"
+'use strict';
 
 import express from 'express'
 import { arrayOfFiles, fieldsOfFiles, getAllPhotos, singleFile } from './photos.controller.js';
@@ -13,7 +13,7 @@ photoRouter.get('/photos', getAllPhotos);
 photoRouter.post('/photo', uploadSingleFile('img'), singleFile);
 
 // Add Photos
-photoRouter.post('/photos', uploadArrayOfFile('img'), arrayOfFiles);
+photoRouter.post('/photos', uploadArrayOfFile('images'), arrayOfFiles);
 
 // Add fields
 photoRouter.post('/fields', uploadFieldsOfFiles('img'), fieldsOfFiles);

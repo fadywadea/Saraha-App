@@ -11,18 +11,26 @@ import { appError } from './src/utils/appError.js';
 import { globalError } from './src/middleware/globalErrorMiddleware.js';
 import dotenv from 'dotenv';
 import photoRouter from './src/modules/photos/photos.routes.js';
+import { v2 as cloudinary } from 'cloudinary';
 
 // Config For File dotenv
 dotenv.config();
 
 const app = express();
-const port = 3000
+const port = 3001
 
 // Database connection
 dbConnection();
 
 // Static Middlewares
 app.use('/', express.static('uploads'));
+
+// configuration cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+});
 
 // JSON Middlewares
 app.use(express.json());
