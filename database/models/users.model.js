@@ -1,6 +1,6 @@
 "use strict";
 
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
   name: String,
@@ -9,17 +9,19 @@ const userSchema = new mongoose.Schema({
   age: Number,
   role: {
     type: String,
-    enum: ['admin', 'user'],
-    default: 'user'
+    enum: ["admin", "user"],
+    default: "user",
   },
   verifyEmail: {
     type: Boolean,
-    default: false
+    default: false,
   },
   isActiveL: {
     type: Boolean,
-    default: true
-  }
-}, { timestamps: true });
+    default: true,
+  },
+},
+  { timestamps: true }
+);
 
-export const userModel = mongoose.model('user', userSchema);
+export const userModel = mongoose.model("user", userSchema);

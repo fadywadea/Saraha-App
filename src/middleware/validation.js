@@ -1,10 +1,13 @@
-'use strict'
+"use strict";
 
 import { appError } from "../utils/appError.js";
 
 export const validation = (schema) => {
   return (req, res, next) => {
-    const { error } = schema.validate({ ...req.body, ...req.params, ...req.query }, { abortEarly: false });
+    const { error } = schema.validate(
+      { ...req.body, ...req.params, ...req.query },
+      { abortEarly: false }
+    );
     if (!error) {
       next();
     } else {
@@ -14,5 +17,5 @@ export const validation = (schema) => {
       });
       next(new appError(errMsg, 401));
     }
-  }
-}
+  };
+};
